@@ -38,7 +38,11 @@ app.use(fileUpload({
 
 // app router
 app.use('/api/v1/', videoRouter);
-app.use('/api/v1/', getRouter);
+
+
+app.listen(port,() => {
+    console.log(`app is running on ${port}`)
+})
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.get('/', function(req, res) {
@@ -62,13 +66,12 @@ app.use('*', (req, res) => {
         error: 'wrong route'
     })
 })
+app.use('/api/v1/', getRouter);
 
-app.listen(port,() => {
-    console.log(`app is running on ${port}`)
-})
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
+
 
 module.exports = app;
