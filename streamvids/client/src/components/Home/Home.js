@@ -1,9 +1,11 @@
 import React from "react";
-import classes from "./Home.module.css";
 import axios from "axios";
 import "./home.css";
 import Pagination from "../Pagination";
 import Slider from '../../containers/Slider/Slider.js';
+import 'bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 class Home extends React.Component {
   constructor() {
@@ -11,7 +13,7 @@ class Home extends React.Component {
 
       this.state = {
           exampleItems: '',
-          filteredItems: '', // It is not filtered by default.
+          filteredItems: [], // It is not filtered by default.
           pageOfItems: [],
           videos: []
       };
@@ -30,9 +32,19 @@ class Home extends React.Component {
   
   }
 
-  onChangePage(videos) {
+  componentDidUpdate(prevProps, prevState) {
+    // reset page if items array has changed
+    if (this.state.videos !== prevState.videos) {
+      this.setState({
+        filteredItems: this.state.videos
+      })
+    
+    }
+}
+  
+  onChangePage(pageOfItems) {
       // update state with new page of items
-      this.setState({ pageOfItems: videos });
+      this.setState({ pageOfItems: pageOfItems });
   }
 
   handleFilter(e) {
@@ -43,51 +55,65 @@ class Home extends React.Component {
     });
     
     if (newFilteredItems.length === 0) { // The loop to display breaks when there's no match for the items so we need to do this
-      newFilteredItems.push({id: 0, name: ''});
-    }
+        newFilteredItems.push({id: 0, title: ''});
+      }
+      
+      this.setState({filteredItems: newFilteredItems });
     
-    this.setState({filteredItems: newFilteredItems });
   }
 
   render() {
-    console.log(this.state.videos)
-    console.log(this.state.comm)
     console.log(this.state.filteredItems)
- 
-    let noResultsMessage = (this.state.filteredItems.length === 0) ? <div>No results found!</div> : '';
-    
-    let tableDisplay = (this.state.filteredItems.length === 0) ? 'hidden' : '';
+    console.log(this.state.filteredItems.length)
+    console.log(this.state.pageOfItems)
+    // let newe = [...Array(this.state.filteredItems).keys()].map(i => (
+    //   { 
+    //     id: (i+1), 
+    //     title: i.title
+    //   }
+    // ));
+    // let noResultsMessage= newe.id === 0 ? <div>No results found!</div> : ''
+    // let tableDisplay = (newe.id === 0) ? 'hidden' : '';
+    // }
     
       return (
           <div>
+            
+            <div>
             <Slider />
-              <div className="container">
-                  <div className="text-center">
-                      <h1>React - Pagination Example with logic like Google</h1>
-                    
-                      <input type="text" placeholder="Filter items" onInput={this.handleFilter} />
-
-                        <div style={{marginBottom: '150px',width: '80%'}}>
-        
-        <div class="gallery">
-     {!this.state.videos ? <h4>loading...</h4> : this.state.videos.map((item) => {
-        return (
-  
-  <div class="single-video">
-  <figure style={{border:'1px solid blue'}}>
-      <iframe src={item.comment} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </figure>
-    </div>
-        )})}
-    </div>
-   </div>
-        {noResultsMessage}
-                    
-         <Pagination items={this.state.videos} onChangePage={this.onChangePage} />
-                </div>
             </div>
-          </div>
+  
+            <div className="container" style={{backgroundColor: '#1c2228'}}>
+
+            <div className="row">
+            <div class="main" style={{width:'100%', margin:'auto'}}>
+              <div class="form-group has-search" style={{width:'50%', margin:'auto', padding: '30px 0'}}>
+    <span class="fa fa-search form-control-feedback"><FontAwesomeIcon icon={faSearch} style={{color:'gray',width:'1rem',height:'1rem'}}/></span>
+    <input type="text" class="form-control" placeholder="Search Videos" onInput={this.handleFilter} />
+            </div>
+            </div>
+        {!this.state.videos ? <h4>loading...</h4> : this.state.pageOfItems.map((item) => {
+        return (
+        <div className="col-lg-4 col-md-4 col-sm-12 padmobile" >
+          <div >
+          <iframe src={item.video} allow="fullScreen; encrypted-media; picture-in-picture"
+  allowfullscreen
+  frameborder="0"></iframe>
+          <h6 style={{textAlign:'center', color:'white'}}>{item.title}</h6>
+  
+        </div>
+        </div>
+)})}
+            </div>
+
+  {/* {noResultsMessage} */}
+  <div style={{width:'100%', margin:'auto', padding: '30px 0'}}>                
+  <Pagination items={this.state.filteredItems} onChangePage={this.onChangePage} />
+</div>
+</div>
+</div>
       );
-  }
+
+}
 }
 export default Home;

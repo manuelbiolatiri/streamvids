@@ -1,12 +1,6 @@
 import React, {useState, useEffect} from "react";
-import PropTypes from 'prop-types';
+import './Pagination.css';
 
-// const propTypes = {
-//     items: React.PropTypes.array.isRequired,
-//     onChangePage: React.PropTypes.func.isRequired,
-//     initialPage: React.PropTypes.number    
-//   }
-  
   const defaultProps = {
     initialPage: 1
   }
@@ -50,9 +44,9 @@ import PropTypes from 'prop-types';
   
         // update state
         this.setState({ pager: pager });
-  
+  console.log(pageOfItems)
         // call change page function in parent component
-        this.props.onChangePage(pageOfItems);
+        console.log(this.props.onChangePage(pageOfItems));
     }
   
     getPager(totalItems, currentPage, pageSize, maxPagesToDisplay) {
@@ -89,6 +83,8 @@ import PropTypes from 'prop-types';
                 startPage = currentPage - halfwayPoint;
                 endPage = currentPage + beforeHalfwayPoint;
             }
+            console.log(startPage)
+            console.log(endPage)
         }
   
         // calculate start and end item indexes
@@ -121,25 +117,48 @@ import PropTypes from 'prop-types';
         }
   
         return (
-            <ul className="pagination">
-                <li className={pager.currentPage === 1 ? 'disabled' : ''}>
-                    <a onClick={() => this.setPage(1)}>First</a>
+
+
+    // <ul v-if="" class="pagination">
+    //   <li style={{margin:'0'}} :class="{'disabled' : pager.currentPage === 1}">
+    //     <a @click="setPage(1)">First</a>
+    //   </li>
+    //   <li style={{margin:'0'}} :class="{'disabled' : pager.currentPage === 1}">
+    //     <a @click="setPage(pager.currentPage - 1)">Previous</a>
+    //   </li>
+    //   <li style={{margin:'0'}} v-for="page in pager.pages" :class="{'active' : pager.currentPage === page}">
+    //     <a @click="setPage(page)" v-html="page"></a>
+    //   </li>
+    //   <li style={{margin:'0'}} :class="{'disabled' : pager.currentPage === pager.totalPages}">
+    //     <a @click="setPage(pager.currentPage + 1)">Next</a>
+    //   </li>
+    //   <li style={{margin:'0'}} :class="{'disabled' : pager.currentPage === pager.totalPages}">
+    //     <a @click="setPage(pager.totalPages)">Last</a>
+    //   </li>
+    // </ul>
+    <div style={{textAlign:'center', margin:'auto'}}>
+        <nav aria-label="Page navigation example">
+            <ul className="pagination justify-content-center">
+                <li style={{margin:'0'}} className={`page-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
+                    <a className="page-link" style={{backgroundColor: '#1c2228 !important', color: '#fff !important'}} tabindex="-1" onClick={() => this.setPage(1)}>First</a>
                 </li>
-                <li className={pager.currentPage === 1 ? 'disabled' : ''}>
-                    <a onClick={() => this.setPage(pager.currentPage - 1)}>Previous</a>
+                <li style={{margin:'0'}} className={`page-item ${pager.currentPage === 1 ? 'disabled' : ''}`}>
+                    <a className="page-link" style={{backgroundColor: '#1c2228 !important', color: '#fff !important'}} onClick={() => this.setPage(pager.currentPage - 1)}>Previous</a>
                 </li>
                 {pager.pages.map((page, index) =>
-                    <li key={index} className={pager.currentPage === page ? 'active' : ''}>
-                        <a onClick={() => this.setPage(page)}>{page}</a>
+                    <li style={{margin:'0'}} key={index} className={`page-item ${pager.currentPage === page ? 'active' : ''}`}>
+                        <a className="page-link" style={{backgroundColor: '#1c2228 !important', color: '#fff !important'}} onClick={() => this.setPage(page)}>{page}</a>
                     </li>
                 )}
-                <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-                    <a onClick={() => this.setPage(pager.currentPage + 1)}>Next</a>
+                <li style={{margin:'0'}} className={ `page-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
+                    <a className="page-link" style={{backgroundColor: '#1c2228 !important', color: '#fff !important'}} onClick={() => this.setPage(pager.currentPage + 1)}>Next</a>
                 </li>
-                <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-                    <a onClick={() => this.setPage(pager.totalPages)}>Last</a>
+                <li style={{margin:'0'}} className={`page-item ${pager.currentPage === pager.totalPages ? 'disabled' : ''}`}>
+                    <a className="page-link" style={{backgroundColor: '#1c2228 !important', color: '#fff !important'}} onClick={() => this.setPage(pager.totalPages)}>Last</a>
                 </li>
             </ul>
+            </nav>
+            </div>
         );
     }
   }

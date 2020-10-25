@@ -7,10 +7,13 @@
   overflow: hidden;
 }
 .body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  /* display: flex; */
+  /* flex-direction: row;     make main axis horizontal (default setting) */
+  /* justify-content: center;  */
+  /* center items horizontally, in this case */
+  /* align-items: center;     center items vertically, in this case */
+  padding-bottom: 150px;
+} 
 
 /* .App-logo {
   animation: App-logo-spin infinite 20s linear;

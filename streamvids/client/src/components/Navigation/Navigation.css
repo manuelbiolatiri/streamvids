@@ -13,7 +13,7 @@ body {
     width: 100%;
     max-width: 100%;
     box-shadow: none;
-    background-color: #FC466B;
+    background-color: #000;
     height: 60px!important;
     overflow: hidden;
     z-index: 10;
@@ -45,7 +45,7 @@ body {
     width: 210px;
     transform: translateX(-250px);
     transition: transform 250ms ease-in-out;
-    background: linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%);
+    background: #000;
 }
 .sidebarMenuInner{
     margin:0;
@@ -147,7 +147,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
         display: none;
     }
     .nav .logo li {
-        margin-left: 50%;
+        margin-left: 110%;
         
     }
 }
@@ -155,6 +155,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 li {
     margin: 0px 20px;
     text-decoration: none;
+    color: #fff
 }
 .nav {
     margin: auto;
@@ -162,6 +163,7 @@ li {
     display: flex;
     width: 80%;
     line-height: 3.8rem;
+    background-color: #000
 }
 .logo li {
     margin: 0
