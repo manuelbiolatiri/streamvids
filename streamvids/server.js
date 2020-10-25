@@ -45,7 +45,7 @@ if (process.env.NODE_ENV === 'production') {
     app.get('/', (req, res) => {
       res.status(200).json(({
           status: 'success',
-          message: 'welcome to the flashtoken api'
+          message: 'welcome to the xstreamvids api'
       }))
     })
 
