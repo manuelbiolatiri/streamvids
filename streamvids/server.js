@@ -39,6 +39,11 @@ app.use(fileUpload({
 app.use('/api/v1/', videoRouter);
 app.use('/api/v1/', getRouter);
 
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+
 // welcome route
 if (process.env.NODE_ENV === 'production') {
 
