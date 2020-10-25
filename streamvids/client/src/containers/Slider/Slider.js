@@ -137,9 +137,9 @@ class Slider extends Component {
               <Slide
                 bgImage={slide.bgImage}
                 logoUrl={slide.logoUrl}
-                title={slide.title}
-                caption={slide.caption}
-                overview={slide.overview}
+                // title={slide.title}
+                // caption={slide.caption}
+                // overview={slide.overview}
               />
             </NavLink>
           </div>
