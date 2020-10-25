@@ -96,22 +96,8 @@ console.log(res)
 }
 }
   return (
-    //   <div className="container center" style={{marginBottom:'600px'}}>
-    //     {errorMessage ? <ToastContainer position= "top-right"
-    //     autoClose= '3000'
-    //     hideProgressBar= {false}
-    //     closeOnClick= {true}
-    //     pauseOnHover= {true}
-    //     draggable= {true}
-    //     progress= {undefined}/> : ''}
-    //         {successMessage ? <ToastContainer position= "top-right"
-    //     hideProgressBar= {false}
-    //     closeOnClick= {true}
-    //     pauseOnHover= {true}
-    //     draggable= {true}
-    //     progress= {undefined}/> : ''}
 
-<div class="container" style={{paddingBottom: '300px',
+<div class="container" style={{paddingBottom: '260px',
     paddingTop: '100px', margin:'auto'}}>
       <div class="row" style={{display: 'flex !important',
    alignItems: 'center !important'}}>
@@ -138,7 +124,7 @@ console.log(res)
             <button onClick={onFormSubmit}
                 className="btn btn-primary btn-block btn-sm">
                 {loading ? <FadeLoader
- css={override} color={"black"} size={2}
+ css={override} color={"black"} 
         /> : `Upload`}</button>
           </form>
       </div>
@@ -147,55 +133,3 @@ console.log(res)
 };
 
 export default UploadVideo;
-
-          {/* <div className="container">
-            <article className="br3 ba b--black-10 mv4 w-100  bg-white shadow-5 center">
-              <main className="pa4 black-80">
-                <div className="measure">
-                  <fieldset id="confirmsale" className="ba b--transparent ph0 mh0">
-                    {/* <h2 className="f1 fw6 ph0 mh0">Upload A Video</h2> */}
-                    {/* <h2 className="">Upload A Video</h2>
-                    <div className="mt3">
-                      <label className="db fw6 lh-copy f6" htmlFor="title">
-                        Title
-                      </label>
-                      <input
-                        className="pa2 input-reset ba bg-transparent hover-bg-white  w-100"
-                        type="text"
-                        name="title"
-                        id="title2"
-                        value={title ? title : ''}
-                        placeholder="Title"
-                        onChange={e => setTitle(e.target.value)}
-                        required
-                      />
-                    </div>
-                    <div className="button-wrap mt3">
-  <label class ="new-button" for="upload"><span>
-  <FontAwesomeIcon icon={faCloudUploadAlt} style={{color:'white',width:'1rem',height:'1rem'}}/>
-  </span> Upload Video</label>
-  <input id="upload" type="file" onChange={e => setImage(e.target.files[0])} />
-</div>  */}
-                    {/* <div className=" button-wrap mt3">
-              
-              <input type="file" name="image" ref={fileInput => this.fileInput = fileInput}
-               style={{display:'none'}} onChange={onChangePhoto} />
-              <button class ="new-button" style={{border:'none'}} onClick={()=> this.fileInput.click()}><span><FontAwesomeIcon icon={faCloudUploadAlt} style={{color:'white',width:'1rem',height:'1rem'}}/>
-  </span> Upload Video</button>
-            </div> */}
-            {/* <div className="mt3">
-            {photo ? <img src={photo} style={{width:'5rem', height:'5rem'}} alt="img"/> : ''}
-            </div>
-                  </fieldset>
-                  <div className="">
-                  <button onClick={onFormSubmit}
-                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib">
-                {loading ? <FadeLoader
- css={override} color={"black"} size={6}
-        /> : `Upload`}</button>
-                  </div>
-                </div>
-              </main>
-            </article>
-          </div>
-          </div> */}

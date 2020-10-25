@@ -34,17 +34,20 @@ app.use(fileUpload({
     useTempFiles: true
 }))
 
-// welcome route
-app.get('/', (req, res) => {
-    res.status(200).json(({
-        status: 'success',
-        message: 'welcome to the blog api'
-    }))
-})
 
 // app router
 app.use('/api/v1/', videoRouter);
 app.use('/api/v1/', getRouter);
+
+// welcome route
+if (process.env.NODE_ENV === 'production') {
+
+    app.get('/', (req, res) => {
+      res.status(200).json(({
+          status: 'success',
+          message: 'welcome to the flashtoken api'
+      }))
+    })
 
 // wronge routes
 app.use('*', (req, res) => {
@@ -57,5 +60,9 @@ app.use('*', (req, res) => {
 app.listen(port,() => {
     console.log(`app is running on ${port}`)
 })
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 module.exports = app;
