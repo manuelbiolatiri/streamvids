@@ -50,7 +50,7 @@ const UploadVideo = (props) => {
         }
         
     };
-   await axios.post("https://xstreamvids.herokuapp.com//api/v1/video", formData, config)
+   await axios.post("https://xstreamvids.herokuapp.com/api/v1/video", formData, config)
         .then((res) => {
           if(res.data.status === 'error') {
             toast.warn(res.data.message, {
