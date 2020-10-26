@@ -25,7 +25,7 @@ class Home extends React.Component {
   }
 
   componentDidMount(){
-  axios.get('https://xstreamvids.herokuapp.com/api/v1/videos')
+  axios.get('https://cors-anywhere.xstreamvids.herokuapp.com/api/v1/videos')
   .then(response => this.setState({
     videos: response.data.videos
   }))
