@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
+const cloudinary = require('cloudinary')
+const multer = require('multer');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const path = require('path')
@@ -9,6 +11,24 @@ dotenv.config();
 
 // instantiate express
 const app = express();
+
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+});
+
+const upload = multer({
+    storage: multer.diskStorage({}),
+    fileFilter: (req, file, cb) => {
+      if (!file.mimetype.match(/mp4|gif$i/)) {
+        cb(new Error('File is not supported'), false)
+        return
+      }
+  
+      cb(null, true)
+    }
+  })
 
 // routers
 const videoRouter = require('./routes/video');
@@ -31,14 +51,14 @@ app.use((req, res, next) => {
 app.use(bodyParser.json({ extended : true }));
 
 // configure file-upload
-app.use(fileUpload({
-    useTempFiles: true
-}))
+// app.use(fileUpload({
+//     useTempFiles: true
+// }))
 
 
 // app router
-app.use('/api/v1/', videoRouter);
-
+app.use('/api/v1/', getRouter);
+app.use('/api/v1/', upload.single('image'), videoRouter);
 
 app.listen(port,() => {
     console.log(`app is running on ${port}`)
@@ -49,29 +69,22 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
-// welcome route
 if (process.env.NODE_ENV === 'production') {
 
     app.get('/', (req, res) => {
       res.status(200).json(({
           status: 'success',
-          message: 'welcome to the xstreamvids api'
+          message: 'welcome to the flashtoken api'
       }))
     })
-
-// wronge routes
-app.use('*', (req, res) => {
-    res.status(404).json({
-        status: 'error',
-        error: 'wrong route'
-    })
-})
-app.use('/api/v1/', getRouter);
-
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-}
-
+    // Exprees will serve up production assets
+    app.use(express.static('client/build'));
+  
+    // Express serve up index.html file if it doesn't recognize route
+    const path = require('path');
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+  }
 
 module.exports = app;

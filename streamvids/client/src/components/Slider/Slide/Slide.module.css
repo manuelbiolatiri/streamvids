@@ -54,7 +54,7 @@
 .LogoImg img {
   width: 400px;
   max-width: 400px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 .Overview {
   font-size: 16px;
@@ -224,9 +224,9 @@
     width: 100%;
     height: auto;
   }
-  .LogoImg img {
+  /* .LogoImg img {
     margin-top: 10px;
-  }
+  } */
   .Overview {
     -webkit-line-clamp: 3;
   }
@@ -253,7 +253,8 @@
     margin-bottom: 10px;
   }
   .SlideInfo {
-    padding-left: 20px;
+    padding: 0;
+    /* padding-left: 20px; */
     width: 90%;
     min-width: 90%;
   }

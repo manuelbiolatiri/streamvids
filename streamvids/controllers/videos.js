@@ -10,12 +10,12 @@ cloudinary.config({
 
 // video controller
 const videos = {
-    postVideo(req, res) {
+   async postVideo(req, res) {
         //  image form-data
-        let image = req.files.image;
+        let image =req.file.path;
         
         const { title } = req.body;
-        console.log(image)
+        // console.log(image)
         console.log(title)
         try {
              // empty body values (form-data)
@@ -27,38 +27,30 @@ const videos = {
             };
 
                 // cloudinary upload
-                cloudinary.v2.uploader.upload(image.tempFilePath, { 
+           const result =  await cloudinary.v2.uploader.upload(image, { 
                     resource_type: "video",
                     folder: "images_folder",
                     // allowedFormats: ["jpg", "png", "jpeg", "gif"],
-                    transformation: [{ width: 1000, height: 500, crop: "limit" }] })
-                    .then(async (result) => {
-                        // gif upload query
-                        const img = `INSERT INTO videos (title, video, createdOn)
+                    transformation: [{ width: 1000, height: 1000, crop: "limit" }] })
+                    const img = `INSERT INTO videos (title, video, createdOn)
                             VALUES($1, $2, $3) RETURNING *`;
                         const values = [title, result.url, new Date().toLocaleString()];
                         const imageQuery = await pool.query(img, values);
-
-                       if (imageQuery) {
-                        res.status(201).json({
-                            status: 'success',
-                            data: {
-                                message: 'video successfully posted',
-                                createdOn: imageQuery.rows[0].createdOn,
-                                postTitle: imageQuery.rows[0].title
-                            }
-                        });
-                       } else {
-                        res.status(400).json({
-                            status: 'error',
-                            message: 'video failed to upload'
-                        });
-                       }
-                        
-                    })
-                    .catch((e) =>
-                        console.log(e)
-                    )
+                        if (imageQuery) {
+                            res.status(201).json({
+                                status: 'success',
+                                data: {
+                                    message: 'video successfully posted',
+                                    createdOn: imageQuery.rows[0].createdOn,
+                                    postTitle: imageQuery.rows[0].title
+                                }
+                            });
+                           } else {
+                            res.status(400).json({
+                                status: 'error',
+                                message: 'video failed to upload'
+                            });
+                           }
         }
         catch (e) {
             console.log(e);

@@ -57,7 +57,7 @@ class Slide extends Component {
           alt=""
           className={classes.SliderImage}
           //src={"http://image.tmdb.org/t/p/w780/" + this.props.bgImage}
-          src={testSlide2}
+          src={this.props.bgImage}
         />
       </div>
     );
