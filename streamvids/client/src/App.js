@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
-// import Games from "./containers/Games/Games";
-import SideBar from './containers/UI/SideBar/SideBar';
-// import NavBar from './containers/UI/NavBar/NavBar';
 import Home from './components/Home/Home';
 import NavBar from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer.js';
-// import Slider from './containers/Slider/Slider.js';
 import UploadVideo from './components/UploadVideo.js';
 import './App.css'
 import {
