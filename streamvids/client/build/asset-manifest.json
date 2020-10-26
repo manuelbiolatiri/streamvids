@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d3f0af56.chunk.css",
+    "main.js": "/static/js/main.0a3d5e72.chunk.js",
+    "main.js.map": "/static/js/main.0a3d5e72.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/css/2.f41a4707.chunk.css": "/static/css/2.f41a4707.chunk.css",
+    "static/js/2.d292ddb5.chunk.js": "/static/js/2.d292ddb5.chunk.js",
+    "static/js/2.d292ddb5.chunk.js.map": "/static/js/2.d292ddb5.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.ec10448c7d78e6cd8deee5f68bae7435.js": "/precache-manifest.ec10448c7d78e6cd8deee5f68bae7435.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.f41a4707.chunk.css.map": "/static/css/2.f41a4707.chunk.css.map",
+    "static/css/main.d3f0af56.chunk.css.map": "/static/css/main.d3f0af56.chunk.css.map",
+    "static/media/mg-icon.png": "/static/media/mg-icon.5eb92ea4.png",
+    "static/media/mixcloud-brands.svg": "/static/media/mixcloud-brands.2a7ef25c.svg",
+    "static/media/xstream.jpg": "/static/media/xstream.65a1d987.jpg",
+    "static/media/xstream1.jpg": "/static/media/xstream1.e84e64ea.jpg",
+    "static/media/xstream2.jpg": "/static/media/xstream2.7b626281.jpg",
+    "static/media/xstream3.jpg": "/static/media/xstream3.5ea5b111.jpg"
+  }
+}
