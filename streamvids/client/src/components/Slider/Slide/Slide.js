@@ -2,10 +2,6 @@ import React, { Component } from "react";
 
 import classes from "./Slide.module.css";
 
-import testSlide from "../../../assets/images/thor-ragnarok.jpg";
-import testSlide2 from "../../../assets/images/thor-ragnarok-2.jpg";
-import testSlide3 from "../../../assets/images/thor-ragnarok-3.jpg";
-
 // import testLogo from "../../../assets/images/indiana-jones-hdclearlogo.png";
 
 class Slide extends Component {
