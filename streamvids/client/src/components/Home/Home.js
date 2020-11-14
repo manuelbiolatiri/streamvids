@@ -25,12 +25,12 @@ class Home extends React.Component {
   }
 
   componentDidMount(){
-  axios.get('https://cors-anywhere.xstreamvids.herokuapp.com/api/v1/videos')
-  .then(response => this.setState({
-    videos: response.data.videos
-  }))
-  
-  }
+    axios.get('https://cors-anywhere.herokuapp.com/http://xstreamvids.herokuapp.com/api/v1/videos')
+    .then(response => this.setState({
+      videos: response.data.videos
+    }))
+    
+    }
 
   componentDidUpdate(prevProps, prevState) {
     // reset page if items array has changed
