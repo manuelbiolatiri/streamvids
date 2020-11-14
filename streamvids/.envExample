@@ -1,0 +1,20 @@
+DB_DATABASE = 
+DB_USER = 
+DB_PASSWORD = root
+DB_SERVER = localhost
+DB_PORT = 5432
+
+DATABASE_URL = 
+NODE_ENV = 
+
+// secret key
+SECRET_KEY = 
+
+// cloudinary config
+CLOUD_NAME = 
+API_KEY = 
+API_SECRET = 
+
+// Admin details
+ADMIN_EMAIL = admin@gmail.com
+ADMIN_PASSWORD = admin
