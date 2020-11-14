@@ -1,5 +1,5 @@
 # blog-crud-api
-A simple blog REST API CRUD with nodejs express postgresql.
+A simple video streaming platform.
 
 ### Prerequisite
 * install [Node.js](https://nodejs.org/en/)
