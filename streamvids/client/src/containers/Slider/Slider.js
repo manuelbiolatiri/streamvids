@@ -9,10 +9,10 @@ import withAutoplay from "react-awesome-slider/dist/autoplay";
 import AwsSliderStyles from "react-awesome-slider/dist/styles.css";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/mg-icon.png";
-import x from "../../assets/images/xstream.jpg";
-import x1 from "../../assets/images/xstream1.jpg";
-import x2 from "../../assets/images/xstream2.jpg";
-import x3 from "../../assets/images/xstream3.jpg";
+import x from "../../assets/images/war.jpg";
+import x1 from "../../assets/images/tvmovie.jpg";
+import x2 from "../../assets/images/thriller.jpg";
+import x3 from "../../assets/images/scifi.jpg";
 import classes from "./Slider.module.css";
 import "./awesome-slider-override.css";
 
