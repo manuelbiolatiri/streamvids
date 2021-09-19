@@ -1,4 +1,4 @@
-# blog-crud-api
+# video streaming
 A simple video streaming platform.
 
 ### Prerequisite
